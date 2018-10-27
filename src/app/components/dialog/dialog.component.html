@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Detalles de producto</h1>
+<div mat-dialog-content>
+  <ul>
+    <li>Acepta mercado pago: {{data.accepts_mercadopago}}</li>
+    <li>Ciudad: {{data.address.city_name}}, {{data.address.state_name}}</li>
+    <li *ngFor="let attribute of data.attributes">{{attribute.name}}: {{attribute.value_name}}</li>
+    <li>Unidades disponibles: {{data.available_quantity}}</li>
+    <li>Tags:
+      <ul>
+        <li *ngFor="let tag of data.tags">{{tag}}</li>
+      </ul>
+    </li>
+    <li>Envio gratis: {{data.shipping.free_shipping}}</li>
+    <li>Finaliza: {{data.stop_time | date}}</li>
+    <a mat-stroked-button href="{{data.permalink}}" target="_blank">Link mercado libre</a>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="mat-button" (click)="onNoClick()">Aceptar</button>
+</div>
