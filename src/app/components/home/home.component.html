@@ -1,3 +1,39 @@
-<p>
-  home works!
-</p>
+<mat-progress-bar *ngIf="cargando" color="accent" mode="query"> </mat-progress-bar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
+               [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+               [fixedBottomGap]="options.value.bottom">
+    {{options.value.fixed ? 'Fixed' : 'Non-fixed'}} Sidenav
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<form class="mat-form" [formGroup]="formBusqueda" (submit)="buscarEstudiante()">
+
+  <mat-form-field class="mat-field-td">
+    <mat-select [disabled]="cargando" formControlName="sitio" placeholder="Pais">
+      <mat-option *ngFor="let sitio of sitios" [value]="sitio.id">{{sitio.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="mat-field-doc">
+    <input matInput [disabled]="cargando"formControlName="producto" placeholder="Producto">
+  </mat-form-field>
+
+  <button [disabled]="cargando && !formBusqueda.valid" mat-raised-button color="primary" type="submit">Buscar</button>
+</form>
+
+<div *ngIf="productos">
+  <mat-card *ngFor="let producto of productos" style="margin: 5% 10%">
+    <mat-card-title>{{producto.title}}</mat-card-title>
+    <mat-card-content>
+      <img [src]="producto.thumbnail">
+    </mat-card-content>
+    <mat-card-footer>Precio: {{producto.price}}</mat-card-footer>
+  </mat-card>
+</div>
