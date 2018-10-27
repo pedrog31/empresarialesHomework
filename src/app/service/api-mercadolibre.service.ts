@@ -17,7 +17,7 @@ export class ApiMercadolibreService {
   }
 
   obtenerProductos(sitio: string, query: string): Observable<any> {
-    const url = `${this.API_URL}${sitio}/search?q=${query}&access_token=${this.TOKEN}`;
+    const url = `${this.API_URL}${sitio}/search?q=${query}`;
     return this.http.get<any>(url).pipe();
   }
 
