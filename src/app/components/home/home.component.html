@@ -1,19 +1,18 @@
+<mat-toolbar color="primary" *ngIf="categorias">
+  <button mat-button [matMenuTriggerFor]="menu">
+    Categorias
+  </button>
+  <mat-menu class="mat-menu-content" #menu="matMenu">
+    <button *ngFor="let categoria of categorias" mat-menu-item (click)="obtenerProductosCategoria(categoria.id)">
+      {{categoria.name}}
+    </button>
+  </mat-menu>
+  <span>Mercado libre - Empresariales</span>
+</mat-toolbar>
+
 <mat-progress-bar *ngIf="cargando" color="accent" mode="query"> </mat-progress-bar>
 
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
-               [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
-               [fixedBottomGap]="options.value.bottom">
-    {{options.value.fixed ? 'Fixed' : 'Non-fixed'}} Sidenav
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-
-  </mat-sidenav-content>
-
-</mat-sidenav-container>
-
-<form class="mat-form" [formGroup]="formBusqueda" (submit)="buscarEstudiante()">
+<form class="mat-form" [formGroup]="formBusqueda" (submit)="buscarProductos()">
 
   <mat-form-field class="mat-field-td">
     <mat-select [disabled]="cargando" formControlName="sitio" placeholder="Pais">
@@ -29,7 +28,7 @@
 </form>
 
 <div *ngIf="productos">
-  <mat-card *ngFor="let producto of productos" style="margin: 5% 10%">
+  <mat-card *ngFor="let producto of productos" style="margin: 5% 10%" (click)="mostrarDetalles(producto)">
     <mat-card-title>{{producto.title}}</mat-card-title>
     <mat-card-content>
       <img [src]="producto.thumbnail">

@@ -18,7 +18,7 @@ import {
   MatSelectModule,
   MatTableModule,
   MatToolbarModule,
-  MatSnackBarModule
+  MatSnackBarModule, MatSidenavModule
 } from '@angular/material';
 
 import {MatIconModule} from '@angular/material/icon';
@@ -44,7 +44,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatNativeDateModule,
     MatTableModule,
     MatAutocompleteModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule
   ],
 })
 export class AppMaterialModule {

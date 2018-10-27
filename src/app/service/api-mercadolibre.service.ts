@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ApiMercadolibreService {
   API_URL = 'https://api.mercadolibre.com/sites/';
-  TOKEN = 'APP_USR-2463149532032416-102619-e14abffc0e4418554da06a8adbca1501-370377130';
+  TOKEN = 'APP_USR-2463149532032416-102702-8e6287e84b15d203e5372c1a674030c5-370377130';
 
   constructor(private http: HttpClient) { }
 
@@ -27,7 +27,7 @@ export class ApiMercadolibreService {
   }
 
   obtenerProductosPorCategoria(sitio: string, categoria: string) {
-    const url = `${this.API_URL}${sitio}/hot_items/search?limit=15&category=${categoria}&access_token=${this.TOKEN}`;
+    const url = `${this.API_URL}${sitio}/search?category=${categoria}`;
     return this.http.get<any>(url).pipe();
   }
 }
